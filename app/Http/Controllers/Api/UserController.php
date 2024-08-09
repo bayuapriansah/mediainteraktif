@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
+use App\Models\UserDetail;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -19,7 +21,11 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
+            'tanggal_lahir' => 'required|date',
+            'alamat' => 'required|string|max:255',
         ]);
+
+        $muridRole = Role::where('name', 'murid')->first();
 
         $user = User::create([
             'name' => $validated['name'],
@@ -27,7 +33,16 @@ class UserController extends Controller
             'password' => bcrypt($validated['password']),
         ]);
 
-        return response()->json($user, 201);
+        $user->roles()->attach($muridRole);
+
+        UserDetail::create([
+            'user_id' => $user->id,
+            'nama' => $user->name,
+            'tanggal_lahir' => $validated['tanggal_lahir'],
+            'alamat' => $validated['alamat'],
+        ]);
+
+        return response()->json(['success' => true, 'user' => $user], 201);
     }
 
     public function show(User $user)
