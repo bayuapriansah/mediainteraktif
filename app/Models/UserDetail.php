@@ -16,4 +16,9 @@ class UserDetail extends Model
         'tanggal_lahir',
         'alamat',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -10,7 +10,24 @@ class UserDetailController extends Controller
 {
     public function index()
     {
-        return UserDetail::all();
+        // Eager load the user relationship and select specific fields
+        $userDetails = UserDetail::with('user:id,email')->get();
+
+        // Transform the data to include email in the response
+        $userDetails = $userDetails->map(function ($userDetail) {
+            return [
+                'id' => $userDetail->id,
+                'user_id' => $userDetail->user_id,
+                'nama' => $userDetail->nama,
+                'email' => $userDetail->user->email, // Include email
+                'tanggal_lahir' => $userDetail->tanggal_lahir,
+                'alamat' => $userDetail->alamat,
+                'created_at' => $userDetail->created_at,
+                'updated_at' => $userDetail->updated_at,
+            ];
+        });
+
+        return response()->json($userDetails);
     }
 
     public function store(Request $request)
