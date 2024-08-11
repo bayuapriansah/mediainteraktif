@@ -19,6 +19,7 @@ class JawabanRecordController extends Controller
             'tugas_materi_id' => 'required|exists:tugas_materi,id',
             'user_id' => 'required|exists:users,id',
             'answer' => 'required|in:a,b,c,d',
+            'score' => 'nullable|integer',
         ]);
 
         $tugas = TugasMateri::find($validated['tugas_materi_id']);
@@ -28,7 +29,7 @@ class JawabanRecordController extends Controller
             'tugas_materi_id' => $validated['tugas_materi_id'],
             'user_id' => $validated['user_id'],
             'answer' => $validated['answer'],
-            'score' => $score,
+            'score' => $validated['score'],
         ]);
 
         return response()->json($jawabanRecord, 201);
