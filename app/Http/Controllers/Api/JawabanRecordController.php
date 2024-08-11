@@ -22,8 +22,8 @@ class JawabanRecordController extends Controller
             'score' => 'nullable|integer',
         ]);
 
-        $tugas = TugasMateri::find($validated['tugas_materi_id']);
-        $score = $tugas->answer === $validated['answer'] ? 25 : 0;
+        // $tugas = TugasMateri::find($validated['tugas_materi_id']);
+        // $score = $tugas->answer === $validated['answer'] ? 25 : 0;
 
         $jawabanRecord = JawabanRecord::create([
             'tugas_materi_id' => $validated['tugas_materi_id'],
