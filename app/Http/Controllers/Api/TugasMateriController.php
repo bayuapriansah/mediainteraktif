@@ -34,7 +34,7 @@ class TugasMateriController extends Controller
     {
         return $tugasMateri;
     }
-    
+
     public function update(Request $request, TugasMateri $tugasMateri)
     {
         $validated = $request->validate([
@@ -56,5 +56,14 @@ class TugasMateriController extends Controller
     {
         $tugasMateri->delete();
         return response()->json(null, 204);
+    }
+
+    public function getByMateriNameId($materi_name_id)
+    {
+        // Fetch TugasMateri where the materi_name_id matches the parameter
+        $tugasMateri = TugasMateri::where('materi_name_id', $materi_name_id)->get();
+
+        // Return the results as a JSON response
+        return response()->json($tugasMateri);
     }
 }
