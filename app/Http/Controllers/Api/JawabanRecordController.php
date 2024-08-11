@@ -16,7 +16,7 @@ class JawabanRecordController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'tugas_materi_id' => 'required|exists:tugas_materi,id',
+            'tugas_materi_id' => 'required|exists:tugas_materis,id',
             'user_id' => 'required|exists:users,id',
             'answer' => 'required|in:a,b,c,d',
             'score' => 'nullable|integer',
