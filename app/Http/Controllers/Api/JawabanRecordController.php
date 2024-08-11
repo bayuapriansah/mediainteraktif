@@ -32,7 +32,10 @@ class JawabanRecordController extends Controller
             'score' => $validated['score'],
         ]);
 
-        return response()->json($jawabanRecord, 201);
+        return response()->json([
+            'success' => true,
+            'data' => $jawabanRecord
+        ], 201);
     }
 
     public function show(JawabanRecord $jawabanRecord)
