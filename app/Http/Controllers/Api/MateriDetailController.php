@@ -22,9 +22,9 @@ class MateriDetailController extends Controller
             'user_id' => 'required|exists:users,id',
             'name' => 'required|string|max:255',
             'materi_1' => 'required|string',
-            'image_materi_1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_materi_1' => 'nullable|image|mimes:jpeg,png,jpg,gif',
             'materi_2' => 'nullable|string',
-            'image_materi_2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_materi_2' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
 
         // Create a new MateriName entry
