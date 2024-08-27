@@ -38,6 +38,7 @@ Route::apiResource('tugas-materi', TugasMateriController::class);
 Route::apiResource('jawaban-record', JawabanRecordController::class);
 
 Route::get('tugas-materi/materi-name/{materi_name_id}', [TugasMateriController::class, 'getByMateriNameId']);
+Route::get('user-details/user_id/{user_id}', [UserDetailController::class, 'getByUserId']);
 
 // Route::post('/login', function (Request $request) {
 //     $credentials = $request->only('email', 'password');

@@ -68,4 +68,13 @@ class UserDetailController extends Controller
         $userDetail->delete();
         return response()->json(null, 204);
     }
+
+    public function getByUserId($user_id)
+    {
+        // Fetch userDetails where the user_id matches the parameter
+        $userDetails = UserDetail::where('user_id', $user_id)->get();
+
+        // Return the results as a JSON response
+        return response()->json($userDetails);
+    }
 }
