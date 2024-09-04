@@ -35,11 +35,12 @@ return [
 
     'allowed_methods' => ['GET', 'POST', 'PUT', 'DELETE'],
 
-    'allowed_origins' => ['https://yourfrontenddomain.com'],
+    'allowed_origins' => ['http://127.0.0.1:8080'],
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['Content-Type', 'Authorization', 'X-Requested-With'],
+    // 'allowed_headers' => ['Content-Type', 'Authorization', 'X-Requested-With'],
+    'allowed_headers' => ['*'],
 
     'exposed_headers' => ['X-Total-Count'],
 
